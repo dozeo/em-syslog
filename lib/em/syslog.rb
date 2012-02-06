@@ -49,7 +49,7 @@ module EventMachine
     attr_reader :syslog_server, :syslog_port, :syslog_sd
     def syslog_setup(server, port=514)
       @syslog_server, @syslog_port = server, port
-      @syslog_sd = EM.open_datagram_socket('0.0.0.0', 0) # FIXME: Dumb quick fix.
+      #@syslog_sd = EM.open_datagram_socket('0.0.0.0', 0) # FIXME: Dumb quick fix.
     end
 
     # THIEVERY: http://github.com/kpumuk/ruby_syslog
