@@ -20,12 +20,12 @@ module EventMachine
  
       class << self
         # THIEVERY: http://github.com/kpumuk/ruby_syslog    
-        def log(severity, message, time = nil)
+        def log(severity, message, time = nil, host = nil)
           raise "Syslog Server not set" if EM.syslog_server.nil?
           
           severity = SEVERITIES[severity] if severity.is_a? Symbol
           time ||= Time.now
-          hostname = Socket.gethostname
+          hostname = host || Socket.gethostname
           day = time.strftime('%b %d').sub(/0(\d)/, ' \\1')
           tag = "#{$0.split('/').last}[#{Process.pid}]"
           
