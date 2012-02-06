@@ -54,8 +54,8 @@ module EventMachine
 
     # THIEVERY: http://github.com/kpumuk/ruby_syslog
     EM::P::Syslog::SEVERITIES.keys.each do |severity|
-      define_method severity do |message|
-        EM::P::Syslog.log(severity, message)
+      define_method severity do |message, time, host|
+        EM::P::Syslog.log(severity, message, time || nil, host || nil)
       end
     end
     
